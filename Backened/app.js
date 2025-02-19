@@ -1,6 +1,7 @@
 import express from 'express'
 import morgan from 'morgan'
 import connectDB from './db/db.js'
+import userRoute from './routes/user.routes.js'
 const app = express()
 
 connectDB()
@@ -14,6 +15,7 @@ app.use(express.urlencoded({extended:true}))
 // express.urlencoded() is a built-in middleware in Express.js that parses incoming URL-encoded form data and makes it available in req.body.
 //extended: true → Parses nested objects and arrays
 
+app.use('/user',userRoute)
 app.get('/',(req,res)=>{
   res.send("Hello World")
 })
